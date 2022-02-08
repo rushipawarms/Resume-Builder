@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../static/images/logo.png";
+import logo from "../../static/images/logo1.png";
 
 function LoggesOut(props) {
   return (
@@ -28,9 +28,9 @@ const Header = (props) => {
   return (  
   <header className="header">
   <nav className="nav">
-      <a href="/" className="holder-logo">
-        <img className='logo' src={logo}></img>
-      </a> 
+      <NavLink to="/" className="holder-logo">
+        <img src={logo} className='logo'></img>
+      </NavLink> 
         <div className="header-links full-height">
 
         {/* { isLoaded(auth) && !isEmpty(auth) ?<> */}
