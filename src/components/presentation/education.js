@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import ResumePreview from './resumePreview'
@@ -7,6 +7,9 @@ import {skinCodes, fieldCd} from './../../constants/typeCodes';
 // import * as educationActions from '../../actions/educationActions';
 // import {bindActionCreators} from 'redux';
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import {seteduction,updateeducation} from '../../Redux/actions/educationAction'
+import contact from "./contact";
 
 function Education(props) {
   console.log('Education');
@@ -24,13 +27,25 @@ function Education(props) {
     }
     return "";
 }
+useEffect(() => {
+  if(props.document.id==null)
+  {
+      history.push('/getting-started')
+  }
+  
+}, [])
   const onSubmit = async(e) => {
-    //console.log(this.state.educationSection);
-    // if(props.educationSection!=null){
-    //     props.updateEducation(props.document.id,education);
-    // }else{
-    //     props.addEducation(props.document.id,education);
-    // }
+
+    
+
+    if(props.educationSection==null)
+    {
+      props.seteducation(education);
+    }
+    else{
+      props.updateeducation(education);
+    }
+    
      history.push('/finalize')
   }
 
@@ -97,10 +112,25 @@ function Education(props) {
     );
   }
 
+  const mapStateToProps=(state)=>{
+return{
+  document:state.doc,
+  contactSection:state.contact,
+  educationSection:state.education
+}
+  }
 
+  const mapDispatchToProps=(dispatch)=>{
+
+    return{
+      seteducation:(education)=>dispatch(seteduction(education)),
+      updateeducation:(education)=>dispatch(updateeducation(education))
+    }
+
+  }
 
   
 
 
-export default Education
+export default connect(mapStateToProps,mapDispatchToProps) (Education)
 

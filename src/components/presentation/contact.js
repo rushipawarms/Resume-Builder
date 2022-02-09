@@ -6,18 +6,20 @@ import {fieldCd, skinCodes}  from '../../constants/typeCodes';
 // import { bindActionCreators } from 'redux';
 // import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import ResumePreview from './resumePreview'
+import ResumePreview from './resumePreview';
+import {setcontact,updatecontact} from '../../Redux/actions/contactAction';
+import { connect } from "react-redux";
 // import { connect } from "react-redux";
 
 function Contact(props) {
    let history = useHistory();
    const [contact,setContact]= useState(props.contactSection);
-//    useEffect(() => {
-//        if(!props.document || !props.document.id || !props.document.skinCd)
-//        {
-//            history.push('/getting-started')
-//        }
-//    }, [])
+   useEffect(() => {
+       if(props.document.id==null)
+       {
+           history.push('/getting-started')
+       }
+   }, [])
   
  
   const onchange=(event)=>{
@@ -27,12 +29,13 @@ function Contact(props) {
         setContact({...contact,[key]:val})
     }
     const onSubmit= async()=>{
-        // if(props.contactSection!=null){
-        //     props.updateContact(props.document.id,contact);
-        // }
-        // else{
-        //     props.addContact(props.document.id,contact);
-        // }
+      if(props.contactSection==null)
+      {
+        props.setcontact(contact);
+      }
+      else{
+        props.updatecontact(contact);
+      }
 
         history.push('/education');
     }
@@ -131,7 +134,21 @@ function Contact(props) {
         </div>
     );
 }
+const mapStateToProps=(state)=>{
 
+    return{
+        document:state.doc,
+        contactSection:state.contact
+    }
 
-export default Contact
+}
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        setcontact:(contact)=>dispatch(setcontact(contact)),
+        updatecontact:(contact)=>dispatch(updatecontact(contact))
+    }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Contact)
 
