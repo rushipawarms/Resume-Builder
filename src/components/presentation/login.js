@@ -9,7 +9,7 @@ import {signInUser} from '../../Redux/actions/authAction'
 import { connect } from "react-redux";
 
   function Login(props) {
-    console.log(props);
+    //console.log(props);
     let history = useHistory();
     const [email,setEmail] = useState('');
     const [password,setPassword]= useState('');

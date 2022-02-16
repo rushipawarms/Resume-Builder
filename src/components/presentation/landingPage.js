@@ -6,7 +6,7 @@ const Lp = () => {
     
         <div className="container  lp-page center">          
         <div className="section">
-         <h1>Create a resume that stands out</h1>
+         <h1 style={{fontFamily:"inherit"}}>Create a resume that stands out</h1>
            <p >Create a Resume that perfectally describes your skils and match job profile.</p>
             <br></br>
            <div >
