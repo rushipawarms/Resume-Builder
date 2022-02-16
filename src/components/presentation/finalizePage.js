@@ -62,7 +62,8 @@ const mapStateToProps =(state)=>{
 return{
   document:state.doc,
   contactSection:state.contact,
-  educationSection:state.education
+  educationSection:state.education,
+  auth:state.firebase.auth
 }
 }
 
