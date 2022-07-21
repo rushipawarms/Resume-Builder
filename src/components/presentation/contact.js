@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 // import { connect } from "react-redux";
 
 function Contact(props) {
+    console.log("contact");
+ 
    let history = useHistory();
    const [contact,setContact]= useState(props.contactSection);
    useEffect(() => {
@@ -127,7 +129,7 @@ function Contact(props) {
                 </div>
 
                 <div className="preview-card">
-                    <ResumePreview contactSection={contact} skinCd={props?.document?.skinCd}></ResumePreview>
+                    <ResumePreview contactSection={contact} skinCd={props.document.skincd}></ResumePreview>
                 </div>
 
             </div>

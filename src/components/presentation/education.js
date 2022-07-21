@@ -105,7 +105,7 @@ useEffect(() => {
             </div>
           </div>
           <div className="preview-card">
-            <ResumePreview contactSection={props.contactSection} educationSection={education} skinCd={props?.document?.skinCd}></ResumePreview>            
+            <ResumePreview contactSection={props.contactSection} educationSection={education} skinCd={props.document.skincd}></ResumePreview>            
           </div>
         </div>
       </div>

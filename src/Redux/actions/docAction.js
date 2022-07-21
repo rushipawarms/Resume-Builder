@@ -2,6 +2,7 @@ import * as docActions from '../actions/action';
 import { v4 as uuidv4 } from 'uuid';
 
 export const setSkin=(skincd)=>{
+    console.log(skincd)
 return{
     type:docActions.SET_SKIN,
     payload:{

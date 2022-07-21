@@ -11,6 +11,8 @@ function GettingStarted(props) {
      let history = useHistory();
      const onChange = async (skinCd) => {
 
+        console.log(skinCd)
+
         if(props.doc.id==null)
         {
             props.setDoc(skinCd);

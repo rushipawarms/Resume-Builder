@@ -1,7 +1,9 @@
 import React from 'react';
 import {fieldCd} from './../../constants/typeCodes'
 function ResumePreview(props){
-    // console.log('Resume Preview');
+
+   console.log('Resume Preview');
+   console.log(props);
     const rvContact=(key, valToAppend)=>{
         if(props.contactSection){
           return props.contactSection[key]?props.contactSection[key] + (valToAppend?valToAppend:'') :'';
